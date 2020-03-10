@@ -1,0 +1,286 @@
+/*  
+Theme Name: Sly 2020
+Theme URI: https://ericslyfield.com/themes/ericslyfieldcom
+Description: A 2020 portfolio theme with grid-responsive blog functionality and custom post tyoes for audio and video.
+Author: Eric Slyfield
+Author URI: https://ericslyfield.com
+Version: 1.0
+*/
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, img, audio, video {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+header {
+}
+
+li {
+  padding: 5px;
+}
+
+/* Link Styling */
+
+a {
+  color: black;
+  white-space: nowrap;
+}
+
+
+
+a:hover{
+  color: darkgreen;
+}
+
+.post-categories {
+  list-style-type: none;
+}
+
+/* Header Styling */
+
+.header-container{
+  top: 0;
+  left: 0;
+  width: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 25px;
+  white-space: nowrap;
+}
+
+.site-title{
+  text-align: left;
+}
+
+.global-nav{
+  margin: 0 auto;
+}
+
+/* Archive (Category) Styling */
+
+.archive-container{
+  width: 80%;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  align-content: center;
+}
+
+.post{
+  width: 100%;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  align-content: center;
+}
+
+
+ul.post-category{
+  margin: 0 auto;
+  padding-top: 25px;
+}
+
+.post-category{
+  margin: 0 auto;
+  padding-top: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+/* Archive (Category) Styling */
+
+.archive-category{
+  margin: 0 auto;
+  padding-top: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+.archive-title{
+  margin: 0 auto;
+  font-size: 150%;
+  color: darkgreen !important;
+  font-weight: bold;
+  padding-top: 10px;
+  text-transform: uppercase;
+}
+
+.archive-time{
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.archive-thumbnail{
+  margin: 0 auto;
+  padding-top: 25px;
+  background-size: contain;`
+}
+
+.archive-content{
+  margin: 0 auto;
+  line-height: 1.5em;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  background-size: contain;
+}
+
+.dot-break{
+  margin: 0 auto;
+}
+
+hr.dot-break{
+  margin: 0 auto;
+}
+
+/* Single Page Styles (Home) */
+
+.page-title{
+  margin: 0 auto;
+  font-size: 150%;
+  color: darkgreen !important;
+  font-weight: bold;
+  padding-top: 10px;
+  text-transform: uppercase;
+}
+
+.page-content{
+  margin: 0 auto;
+  line-height: 1.5em;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  background-size: contain;
+}
+
+/* */
+
+header .navigation {
+  margin: 0 auto;
+  right: 25px;
+  padding: 0;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+}
+
+/* Navigation Link Spacing */
+
+header .navigation li a {
+  padding: .25rem 1rem;
+  color: black;
+}
+
+
+header .navigation li:first-child a {
+  padding-left: 0;
+  color: black;
+}
+
+header .navigation li:last-child a {
+  padding-left: 0;
+  color: black;
+}
+
+.navigation a{
+  margin: 0 auto;
+}
+
+/* Grid Styles for Header */
+
+section {
+  padding-top: 25px;
+}
+
+section#site-title {
+  padding-top: 25px;
+}
+
+section#global-nav {
+  padding-top: 25px;
+  padding-left: 550px;
+}
+
+/* Blog Category Styling*/
+
+.archive-container{
+}
+
+.post{
+
+}
+
+
+/* Body Styling */
+
+#body-container{
+}
+
+
+/* Post Break Styling */
+
+hr.dot-break {
+  border-top: 1px dotted darkgreen;
+  width: 50%;
+  left: 50%;
+}
+
+/* Front Page Styling */
+
+.wrapper {
+
+}
+
+
+/* Post Image Centering (Gutenberg Fix) */
+
+.jetpack-lazy-images-js .jetpack-lazy-image {
+    display: block;
+}
+
+.wp-block-image .aligncenter, .wp-block-image .alignleft, .wp-block-image .alignright, .wp-block-image.is-resized {
+    display: block;
+    text-align: center;
+}
+
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+
