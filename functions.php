@@ -70,7 +70,7 @@ add_image_size('large', 1700, 1700, false);
 
 function first_category_link(){
 		$category = get_the_category();
-		$category_link = get_category_link($category -> term_id);
+		$category_link = get_the_tags($category -> term_id);
 		$parent = get_cat_name($category[1] -> category_subcategory);
 		$parent_ID = get_cat_ID($parent);
 		$parent_link = get_category_link($parent_ID);
