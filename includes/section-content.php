@@ -5,15 +5,15 @@
 
 <body>
 
-<?php if (have_posts()) : while( have_posts() ): the_post(); ?>
+<?php if (have_posts()) : while( have_posts() ): the_post(); echo 'The Format: ' .get_post_format(); ?>
 
 	<div class="section-category">
 	<?php the_category('');?>	
 	</div>
-	<div class="section-category">
+	<div class="section-title">
 	<a href="<?php the_permalink();?>"><?php the_title(); ?></a>
 	</div>
-	<div class="section-category">
+	<div class="section-thumbnail">
 	<?php the_post_thumbnail('large'); ?>
 	</div>
 		<br>

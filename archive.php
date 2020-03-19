@@ -1,12 +1,14 @@
-
-
-<?php get_header(); ?>
-
-<div class="archive-container">
+<?php get_header();  ?>
+<br>
+<div class="container">
 
 		<article class="post">
-							
-				<?php get_template_part('includes/section','archive'); ?>
+				
+				<?php if (have_posts()) : while( have_posts() ): the_post();  echo 'The Format: ' .get_post_format(); ?>
+
+				<?php get_template_part('includes/format', get_post_format()); ?>
+
+			<?php endwhile; endif; ?>
 				
 		</article>
 </div>

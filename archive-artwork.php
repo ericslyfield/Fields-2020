@@ -2,7 +2,7 @@
 
 <div class="container">
 	<article class="post">	
-		<?php get_template_part('includes/section','archive'); ?>
+		<?php get_template_part('includes/section','artwork'); ?>
 	</article>
 </div>
 
