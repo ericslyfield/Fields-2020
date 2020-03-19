@@ -4,6 +4,9 @@
   <meta charset="utf-8">
   <title>Eric Slyfield 2020</title>
 
+  <!-- wavesurfer.js -->
+    <script src="../../dist/wavesurfer.js"></script>
+
     <?php wp_head();?>
 
 

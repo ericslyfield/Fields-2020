@@ -8,7 +8,6 @@ Version: 1.0
 */
 
 
-
 * {
   margin: 0;
   padding: 0;
@@ -30,13 +29,36 @@ ol, ul {
   list-style: none;
 }
 blockquote, q {
-  quotes: none;
+  quotes: ;
 }
+
 blockquote:before, blockquote:after,
 q:before, q:after {
   content: '';
   content: none;
 }
+
+
+blockquote::before {
+content: "\201C";
+display: block;
+font-size: 80px;
+left: -125px;
+top: 25px;
+position: relative;
+height: 0;
+}
+
+blockquote::after {
+content: "\201D";
+display: block;
+font-size: 80px;
+right: -375px;
+bottom: 25px;
+position: relative;
+height: 0;
+}
+
 table {
   border-collapse: collapse;
   border-spacing: 0;
@@ -61,6 +83,7 @@ a {
 a:hover{
   color: darkgreen;
 }
+
 
 .post-categories {
   list-style-type: none;
@@ -129,7 +152,6 @@ ul.post-category{
   justify-content: center;
 }
 
-
 .archive-title{
   margin: 0 auto;
   font-size: 150%;
@@ -137,17 +159,26 @@ ul.post-category{
   font-weight: bold;
   padding-top: 10px;
   text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .archive-time{
   margin: 0 auto;
   padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .archive-thumbnail{
   margin: 0 auto;
   padding-top: 25px;
-  background-size: contain;`
+  background-size: contain;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .archive-content{
@@ -156,6 +187,100 @@ ul.post-category{
   padding-top: 30px;
   padding-bottom: 50px;
   background-size: contain;
+}
+
+/* Post Styling */
+
+/* Archive (Category) Styling */
+
+.post-category{
+  margin: 0 auto;
+  padding-top: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+.post-title{
+  margin: 0 auto;
+  font-size: 150%;
+  color: darkgreen !important;
+  font-weight: bold;
+  padding-top: 10px;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.post-time{
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+.post-thumbnail{
+  margin: 0 auto;
+  padding-top: 25px;
+  background-size: contain;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.post-content{
+  margin: 0 auto;
+  line-height: 1.5em;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  background-size: contain;
+}
+
+/* Quote Styling */
+
+/* Archive (Category) Styling */
+
+.quote-category{
+  margin: 0 auto;
+  padding-top: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+.quote-title{
+  margin: 0 auto;
+  font-size: 150%;
+  color: darkgreen !important;
+  font-weight: bold;
+  padding-top: 10px;
+  text-transform: uppercase;
+}
+
+.quote-time{
+  margin: 0 auto;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.quote-thumbnail{
+  margin: 0 auto;
+  padding-top: 25px;
+  background-size: contain;
+}
+
+.quote-content{
+  margin: 0 auto;
+  line-height: 1.5em;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  background-size: contain;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 .dot-break{

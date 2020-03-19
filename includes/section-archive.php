@@ -1,5 +1,3 @@
-<?php if (have_posts()) : while( have_posts() ): the_post(); ?>
-
 			<div class="archive-category">
 				<?php first_category_link() ;?>
 			</div>
@@ -15,12 +13,8 @@
 				<?php the_post_thumbnail('large'); ?>
 			</div>
 			<div class="archive-content">
-				<?php the_content();?>
+				<?php the_content(); ?>
 			</div>
 			<div class="archive-break">
 			<hr class="dot-break">
 			</div>
-
-	<div class="page-navigation"><p><?php posts_nav_link(); ?></p></div>
-
-<?php endwhile; else: endif; ?>

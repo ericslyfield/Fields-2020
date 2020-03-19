@@ -21,7 +21,6 @@ function include_jquery()
 }
  add_action('wp_enqueue_scripts', 'include_jquery');
 
-
 function loadjs()
 {
 	// Custom Javascript Support
@@ -30,15 +29,46 @@ function loadjs()
 }
 add_action('wp_enqueue_scripts', 'loadjs');
 
+
+
 /* Theme Support */
 
-// Menu Support
+// Adds Menu Support
 add_theme_support('menus');
 
-// Post Format Support
-add_theme_support('post-formats', array('gallery', 'link', 'image', 'quote', 'video', 'audio'));
+// Adds Post Format Support
+add_theme_support('post-formats', array('aside', 'quote', 'link', 'image', 'video', 'gallery', 'audio'));
 
-/* Custom Post Support */
+function the_post_format(){
+	   if ( has_post_format( 'aside' )) {
+	  // code to display the aside format post here
+	   	get_template_part('includes/format','aside');
+	}  else if (has_post_format('quote')) {
+	   // stuff to display the quote format post here
+		get_template_part('includes/format','quote');
+	}  else if (has_post_format('link')) {
+	   // stuff to display the link format post here
+		get_template_part('includes/format','link');
+	}  else if (has_post_format('image')) {
+	   // stuff to display the image format post here
+		get_template_part('includes/format','image');
+	}  else if (has_post_format('video')) {
+	   // stuff to display the video format post here
+		get_template_part('includes/format','video');
+	}  else if (has_post_format('gallery')) {
+	   // stuff to display the gallery format post here
+		get_template_part('includes/format','gallery');
+	}  else if (has_post_format('audio')) {
+	   // stuff to display the audio format post here
+		get_template_part('includes/format','audio');
+	}  else {
+	   // code to display the normal format post here
+		get_template_part('includes/format','archive');
+	}
+};
+
+/* Custom Post Support - Backend Extension */
+
 function custom_post_type()
 {
 
@@ -58,7 +88,8 @@ register_post_type('artwork', $args);
 add_action('init', 'custom_post_type');
 
 
-// Featured Image Support
+// Featured Image / Thumbail Support
+
 add_theme_support('post-thumbnails');
 set_post_thumbnail_size(250, 250, false);
 add_image_size('small', 350, 350, false);
