@@ -138,3 +138,14 @@ register_nav_menus(
 		'footer-menu' =>__('Footer Menu', 'theme'),
 	)
 );
+
+
+/* Back End Support */
+
+function remove_footer_admin () {
+ 
+echo 'Designed and developed by Eric Slyfield';
+ 
+}
+ 
+add_filter('admin_footer_text', 'remove_footer_admin');
