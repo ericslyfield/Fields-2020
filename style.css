@@ -7,7 +7,6 @@ Author URI: https://ericslyfield.com
 Version: 1.0
 */
 
-
 * {
   margin: 0;
   padding: 0;
@@ -29,7 +28,7 @@ ol, ul {
   list-style: none;
 }
 blockquote, q {
-  quotes: ;
+  quotes: none;
 }
 
 blockquote:before, blockquote:after,
@@ -78,12 +77,9 @@ a {
   white-space: nowrap;
 }
 
-
-
 a:hover{
   color: darkgreen;
 }
-
 
 .post-categories {
   list-style-type: none;
@@ -100,6 +96,7 @@ a:hover{
   grid-template-columns: 1fr 1fr;
   grid-gap: 25px;
   white-space: nowrap;
+
 }
 
 .site-title{
@@ -127,7 +124,6 @@ a:hover{
   flex-direction: column;
   align-content: center;
 }
-
 
 ul.post-category{
   margin: 0 auto;
@@ -328,7 +324,6 @@ header .navigation li a {
   padding: .25rem 1rem;
   color: black;
 }
-
 
 header .navigation li:first-child a {
   padding-left: 0;

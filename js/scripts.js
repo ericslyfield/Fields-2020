@@ -1,4 +1,5 @@
 $(document).ready(function(){
+<<<<<<< HEAD
 	alert('results may vary.');
 });
 
@@ -21,3 +22,8 @@ $(".play-btn").click(function(e){
 });
 
 });
+=======
+
+	alert('-e.');
+})
+>>>>>>> 96e19c02d8d09051bcde05434c0419ba7d67a0b6

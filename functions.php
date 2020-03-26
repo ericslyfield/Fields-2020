@@ -139,7 +139,6 @@ register_nav_menus(
 	)
 );
 
-
 /* Back End Support */
 
 function remove_footer_admin () {
