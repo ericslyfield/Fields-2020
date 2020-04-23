@@ -8,8 +8,8 @@
 
 				<?php if(get_template_part('includes/format', get_post_format()));?>
 				<br>
-				<hr class="dot-break">
 				<?php endwhile; endif; ?>
+				<hr class="dot-break">
 			
 				
 		</article>
