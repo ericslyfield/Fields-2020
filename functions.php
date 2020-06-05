@@ -1,5 +1,18 @@
 <?php 
 
+/*
+
+00. Help Desk
+_______________________________
+
+This section helps you navigate the document.
+01. Bootstrap 
+02. Stylesheet (via styles.css)
+03. 
+
+
+*/
+
 function load_global_styles() 
 {
 	// Bootstrap Support
@@ -17,7 +30,7 @@ function include_jquery()
 {
 	// jQuery Support
 	wp_deregister_script('jquery');
-	wp_enqueue_script('jquery', get_template_directory_uri() . '/js/jquery-3.4.1.min.js', '', 1, true);
+	wp_enqueue_script('jquery', get_template_directory_uri() . '/js/jquery-3.5.1.min.js', '', 1, true);
 }
  add_action('wp_enqueue_scripts', 'include_jquery');
 
@@ -150,3 +163,5 @@ echo 'Designed and developed by Eric Slyfield';
 }
  
 add_filter('admin_footer_text', 'remove_footer_admin');
+
+?>
