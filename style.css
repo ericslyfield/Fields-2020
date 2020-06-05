@@ -7,6 +7,19 @@ Author URI: https://ericslyfield.com
 Version: 1.0
 */
 
+/*
+
+00. Help Desk
+_______________________________
+
+This section helps you navigate the document.
+01. HTML5 Resets
+02. General Theme Support
+03.
+
+
+*/
+
 * {
   margin: 0;
   padding: 0;
@@ -36,7 +49,6 @@ q:before, q:after {
   content: '';
   content: none;
 }
-
 
 blockquote::before {
 content: "\201C";
@@ -81,6 +93,11 @@ a:hover{
   color: darkgreen;
 }
 
+canvas{
+}
+
+/* Section */
+
 .post-categories {
   list-style-type: none;
 }
@@ -96,7 +113,6 @@ a:hover{
   grid-template-columns: 1fr 1fr;
   grid-gap: 25px;
   white-space: nowrap;
-
 }
 
 .site-title{
@@ -113,7 +129,7 @@ a:hover{
   width: 80%;
   display: flex;
   margin: 0 auto;
-  flex-direction: column;
+  flex-direction: row;
   align-content: center;
 }
 
@@ -187,7 +203,7 @@ ul.post-category{
 
 /* Post Styling */
 
-/* Archive (Category) Styling */
+/* Post (Category) Styling */
 
 .post-category{
   margin: 0 auto;
@@ -234,7 +250,7 @@ ul.post-category{
 
 /* Quote Styling */
 
-/* Archive (Category) Styling */
+/* Quote (Category) Styling */
 
 .quote-category{
   margin: 0 auto;
@@ -289,7 +305,7 @@ hr.dot-break{
 
 /* Audio Styling */
 
-/* Archive (Category) Styling */
+/* Audio (Category) Styling */
 
 .audio-category{
   margin: 0 auto;
@@ -326,20 +342,56 @@ hr.dot-break{
   background-size: contain;
 }
 
+.audio-embed{
+  margin: 0 auto;
+  padding-top: 0px;
+  flex: 0 0 100%;
+  background-size: contain;
+  flex-direction: row;
+  justify-content: center;
+}
+
 .audio-content{
   margin: 0 auto;
   line-height: 1.5em;
   padding: 30px;
   padding-bottom: 30px;
   background-size: contain;
-  display: flex;
+  text-align: center;
+  flex: 0 0 100%;
+  flex-shrink: 0;
   flex-direction: row;
   justify-content: center;
 }
 
+.audio-content > .audio-embed {
+  width: 100%;
+  height: 100%;
+}
+
 .audio-content > iframe{
   width: 100%;
-  height: 166px;
+  height: 100%;
+}
+
+iframe{
+  width: 100%;
+  height: 100%;
+}
+
+.audio-style{
+  line-height: 1.5em
+  background-size: contain;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+
+.wp-alex-wavesurfer{
+  position: relative;
+  display: block;
+  text-align: center;
 }
 
 .dot-break{
@@ -348,6 +400,80 @@ hr.dot-break{
 
 hr.dot-break{
   margin: 0 auto;
+}
+
+/* video Styling */
+
+/* video (Category) Styling */
+
+.video-category{
+  margin: 0 auto;
+  padding-top: 25px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+
+.video-title{
+  margin: 0 auto;
+  font-size: 150%;
+  color: #228B22;
+  font-weight: bold;
+  padding-top: 10px;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.video-title a {
+  color: #228B22
+}
+
+.video-time{
+  margin: 0 auto;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.video-thumbnail{
+  margin: 0 auto;
+  padding-top: 25px;
+  background-size: contain;
+}
+
+
+
+.video-content{
+  margin: 0 auto;
+  position: relative;
+  width: auto;
+  height: 100%;
+  line-height: 1.5em;
+  padding: 30px;
+  padding-bottom: 30px;
+  text-align: center;
+}
+
+.video-embed{
+  margin: 0 auto;
+  display: inline-block;
+  text-align: center;
+  padding-top: 0px;
+  flex: 0 0 100%;
+  background-size: contain;
+  flex-direction: row;
+  justify-content: center;
+}
+.video-content  iframe{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
 }
 
 /* Single Page Styles (Home) */
