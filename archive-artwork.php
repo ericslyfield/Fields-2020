@@ -1,9 +1,11 @@
-<?php get_header(); ?>
+<?php get_header();?>
 
-	<div class="container">
+<?php echo 'archive-artwork.php' ?>
 
-		<article class="post">	
-			<?php get_template_part('includes/section','artwork'); ?>
+	<div class="wrapper">
+
+		<article class="posts">	
+			<?php get_template_part('includes/format', get_post_format());?>
 		</article>
 		
 	</div>

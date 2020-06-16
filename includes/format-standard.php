@@ -3,8 +3,8 @@
 	<div class="category">
 		<a href="<?php the_permalink();?>"><?php the_first_subcategory(); ?></a>
 	</div>
-	<br>
 	<h2 class="title">
+		<br>
 		<a href="<?php the_permalink();?>"><?php the_title(); ?></a>
 	</h2>
 	<br>

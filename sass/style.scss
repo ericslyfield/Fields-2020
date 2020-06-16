@@ -1,0 +1,257 @@
+/*  
+Theme Name: Sly 2020
+Theme URI: https://ericslyfield.com/themes/ericslyfieldcom
+Description: A 2020 portfolio theme with grid-responsive blog functionality and custom post types for audio and video.
+Author: Eric Slyfield
+Author URI: https://ericslyfield.com
+Version: 1.0.0
+License: GNU General Public License v2 or Later
+License URI: http://www.gnu.org/licenses/gpi-2.0.html
+Tags: blog, portfolio, minimal, ;
+*/
+
+/*
+
+00. Help Desk
+_______________________________
+
+This section helps you navigate the document.
+
+00. Imports
+01. HTML5 Resets
+02. General Theme Support
+03.
+*/
+
+@import "./variables";
+// @import "./font-library";
+
+@font-face {
+  font-family: 'Rift Soft';
+  src: url(fonts/RiftSoft-Regular.woff2) format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  }
+
+
+html {
+  font-family: 'Rift Soft';
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+/*
+
+// HTML5 Reset Rules
+
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+// HTML5 display reset for older browsers 
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section, img, audio, video {
+  display: block;
+}
+body, p, a, ul, ol {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+img {
+  width: auto;
+}
+
+
+/*
+
+// Header Styling
+
+*/
+
+#header-wrapper {
+  width: 87%;
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  grid-gap: 25px;
+  white-space: nowrap;
+  padding: 5vw 5vw 5vw 5vw;
+}
+
+#site-title {
+  flex: 1;
+}
+
+#navigation {
+  flex: 1;
+  text-align: right;
+}
+
+/*
+
+// Link Styling
+
+*/
+
+a {
+  color: black;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+a:hover {
+  color: $forestgreen;
+}
+
+/*
+
+// Font Styling
+
+*/
+
+html * {
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1em;
+  color: #000;
+}
+
+h2 * {
+  text-transform: uppercase;
+  font-size: 1.5em;
+  font-weight: bold;
+  color: $forestgreen;
+}
+
+
+/*
+
+// Archive (Category) Styling
+
+*/
+
+hr {
+  height: 1px;
+  width: 1px;
+}
+
+#wrapper {
+  margin: 0;
+  width: 87vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.post, .posts {
+  grid-area: post;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  
+  width: inherit;
+}
+
+.time {
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.category{
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination {
+  
+  padding: 25px;
+
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+  text-align: center;
+  justify-content: center;
+
+  background-color: yellow;
+
+}
+
+.dot-break {
+  height: 1px;
+  width: 60%;
+  max-width: 500px;
+  margin: 25px auto;
+  border-top: dotted 1px;
+}
+
+footer {
+  margin: 25px;
+  color: red;
+  background-color: red;
+}
+
+
+
+

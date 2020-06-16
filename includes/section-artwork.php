@@ -1,4 +1,9 @@
-<?php if (have_posts()) : while( have_posts() ): the_post(); ?>
+<?php get_header();?>
+
+<?php echo "section-artwork.php"; ?>
+
+<?php get_template_part('includes/format', get_post_format());?>
+	
 	
 	<?php the_post_thumbnail('large'); ?>
 	<br>

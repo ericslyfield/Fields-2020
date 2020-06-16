@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 /*
 
@@ -6,6 +6,7 @@
 _______________________________
 
 This section helps you navigate the document.
+AA. Global Styles
 01. Bootstrap 
 02. Stylesheet (via styles.css)
 03. 
@@ -15,12 +16,10 @@ This section helps you navigate the document.
 
 function load_global_styles() 
 {
-	// Bootstrap Support
-	wp_register_style('bootstrap', get_template_directory_uri() . '/css/bootstrap.min.css', array(), false, 'all');
-	wp_enqueue_style('bootstrap');
 
-	// Stylesheet Support
-	wp_register_style('stylesheet', get_template_directory_uri() . '/style.css', array(), false, 'all');
+	// 1. Stylesheet Support
+
+	wp_register_style('stylesheet', get_template_directory_uri() . '/sass/style.css', array(), false, 'all');
 	wp_enqueue_style('stylesheet');
 }
 add_action('wp_enqueue_scripts', 'load_global_styles');
@@ -50,40 +49,39 @@ add_action('wp_enqueue_scripts', 'loadjs');
 add_theme_support('menus');
 
 // Adds Post Format Support
-add_theme_support('post-formats', array('aside', 'quote', 'link', 'image', 'video', 'gallery', 'audio'));
+add_theme_support('post-formats', array('standard', 'aside', 'quote', 'link', 'image', 'video', 'gallery', 'audio'));
 
-function the_post_format(){
+function the_post_format() {
 	   if ( has_post_format( 'aside' )) {
-	  // code to display the aside format post here
+	  // Displays the Aside Post Format
 	   	get_template_part('includes/format','aside');
 	}  else if (has_post_format('quote')) {
-	   // stuff to display the quote format post here
+	   // Displays the Quote Post Format
 		get_template_part('includes/format','quote');
 	}  else if (has_post_format('link')) {
-	   // stuff to display the link format post here
+	   // Displays the Link Post Format
 		get_template_part('includes/format','link');
 	}  else if (has_post_format('image')) {
-	   // stuff to display the image format post here
+	   // Displays the Image Post Format
 		get_template_part('includes/format','image');
 	}  else if (has_post_format('video')) {
-	   // stuff to display the video format post here
+	   // Displays the Gallery Post Format
 		get_template_part('includes/format','video');
 	}  else if (has_post_format('gallery')) {
-	   // stuff to display the gallery format post here
+	   // Displays the Gallery Post Format
 		get_template_part('includes/format','gallery');
 	}  else if (has_post_format('audio')) {
-	   // stuff to display the audio format post here
+	   // Displays the Audio Post Format
 		get_template_part('includes/format','audio');
-	}  else {
-	   // code to display the normal format post here
-		get_template_part('includes/format','archive');
+	}  else if (has_post_format('standard')) {
+	   // Displays the Standard Post Format
+		get_template_part('includes/format','standard');
 	}
 };
 
 /* Custom Post Support - Backend Extension */
 
-function custom_post_type()
-{
+function custom_post_type() {
 
 $args = array(
 
@@ -112,21 +110,19 @@ add_image_size('large', 1700, 1700, false);
 
 // Show Post Category Parent or First Tag
 
-function first_category_link(){
-		$category = get_the_category();
-		$category_link = get_the_tags($category -> term_id);
-		$parent = get_cat_name($category[0] -> category_subcategory);
-		$subcategory = get_cat_name($category[1] -> category_subcategory);
-		$parent_ID = get_cat_ID($parent);
-		$parent_link = get_category_link($parent_ID);
+function the_first_subcategory() {
 
-		if ($parent_link == $parent) {
-			echo '<a href=" '. $parent_link . '">' . $parent . '</a>';
-		} 
-		else {
-			echo '<a href=" '. $category_link . '">' . $category[1] -> name . '</a>';
-		}
+       $cat_name = 'category';
+       $categories = get_the_terms( $post->ID, $cat_name );
+       
+       foreach($categories as $category) {
+         if($category->parent){
+            echo $category->name;
+         }
+       }  
 };
+
+
 
 // Custom Taxonomy Support
 
@@ -142,6 +138,7 @@ function custom_taxonomy(){
 			);
 register_taxonomy('mediums', array('artwork'), $args);
 }
+
 add_action('init', 'custom_taxonomy');
 
 

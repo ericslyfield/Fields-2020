@@ -1,18 +1,22 @@
-<!DOCTYPE html>
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<head></head>
+<?php get_header();?>
 
-<body>
-<?php get_header(); ?>
+<main id="wrapper">
 
-<div class="container" id="body-container">
+	<?php echo "front-page.php"; ?>
+	<br>
+	<?php if (have_posts()) : while( have_posts() ): the_post();  echo ' Post Format: ' . get_post_format(); ?>
+	<article class="posts">
+		<br>
+		<?php get_template_part('includes/format', get_post_format());?>
+	</article>
 
-						<article class="post">
-						<?php get_template_part('includes/section','content'); ?>
-							<hr class="post-break"></hr>
-						</article>
+	<?php endwhile; else: endif; ?>
 
-	</div>
+	<div class="pagination"> <?php posts_nav_link(); ?> </div>
+
+</main>
 </body>
-<?php get_footer();?>
+
+<footer>
+	<?php get_footer(); ?>
+</footer>

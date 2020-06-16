@@ -1,5 +1,4 @@
 <section>
-	<div class="container">
 						
 	<?php 
 
@@ -24,10 +23,12 @@
 	}  else if (has_post_format('audio')) {
 	   // stuff to display the audio format post here
 		get_template_part('includes/format','audio');
-	}  else {
+	}  else if (has_post_format('standard')) {
 	   // code to display the normal format post here
-		get_template_part('includes/section','archive');
-	}; ?>
+		get_template_part('includes/format','standard');
+	}	else {
+		get_template_part('includes/format','standard');
+};
+?>
 
-	</div>
 </section>

@@ -1,8 +1,12 @@
 <?php get_header();?>
 
-	<div class="container">
+
+<?php echo 'single.php' ?>
+
+	<div class="wrapper">
 
 			<article class="post">
+				<?php echo 'blank' ?>
 				<?php get_template_part('includes/section','content'); ?>
 			</article>
 

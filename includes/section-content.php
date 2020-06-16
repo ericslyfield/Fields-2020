@@ -1,23 +1,23 @@
-<!DOCTYPE html>
-<html>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<head></head>
 
+<?php get_header();  ?>
 <body>
+
+	<?php echo 'section-content.php' ?>
 
 <?php if (have_posts()) : while( have_posts() ): the_post(); echo 'The Format: ' .get_post_format(); ?>
 
-	<div class="section-category">
-	<?php the_category('');?>	
+	<div class="category">
+	<?php the_first_subcategory() ;?>	
 	</div>
-	<div class="section-title">
+	<h2 class="title">
 	<a href="<?php the_permalink();?>"><?php the_title(); ?></a>
-	</div>
+	</h2>
 	<div class="section-thumbnail">
 	<?php the_post_thumbnail('large'); ?>
 	</div>
 		<br>
-		<div ></div>
-			<?php the_content();?>
-			<hr class="dot-break">
+		<div >
+		<?php the_content(); ?>
+</body>
+		<hr class="dot-break">
 <?php endwhile; else: endif; ?>

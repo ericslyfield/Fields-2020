@@ -1,7 +1,8 @@
-<section id="wrapper">
+	<h2 class="title">
+	<a href="<?php the_permalink();?>"><?php the_title(); ?></a>
+	</h2>
 
-		<br>
-		<h2 class="time">
+			<h2 class="time">
 			<?php the_time('D j, Y'); ?>
 			<br>
 			<?php the_time('H:i:s'); ?>
@@ -14,5 +15,3 @@
 		<hr class="dot-break">
 		<br>
 		</div>
-
-</section>

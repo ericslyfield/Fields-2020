@@ -1,7 +1,10 @@
+<?php echo 'single-page.php' ?>
+
 <?php if (have_posts()) : while( have_posts() ): the_post(); ?>
 
+
 			<div class="page-category">
-				<?php the_category('');?>
+				<?php the_first_subcategory();?>
 			</div>
 			<br>
 			<div class="page-title">

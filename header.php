@@ -2,25 +2,21 @@
 <html lang="en" <?php language_attributes(); ?>>
 <head>
   <meta charset="utf-8">
-  <title>Eric Slyfield 2020</title>
-
-  <!-- wavesurfer.js -->
-    <script src="../../dist/wavesurfer.js"></script>
+  <title><?php get_the_title(); ?></title>
 
     <?php wp_head();?>
-
 
 </head>
 
   <header>
     
-      <div class="header-container">
+      <div id="header-wrapper">
 
-        <section id="site-title">
+        <article id="site-title">
           <a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a>
-        </section>
+        </article>
         
-        <section id="global-nav">
+        <article id="navigation">
         <?php wp_nav_menu(
 
         array(
@@ -28,7 +24,7 @@
           'menu_class' => 'navigation',
           )
         );?>
-        </section>
+        </article>
       </div>
   </header>
 

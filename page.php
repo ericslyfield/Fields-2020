@@ -1,16 +1,18 @@
 <?php get_header();?>
-	
-<div class="container">
 
-		<article class="post">
-							
-				<?php get_template_part('includes/section','page'); ?>
+
+
+<div id="wrapper">
+
+<?php echo "page.php"; ?>
+		<article class="posts">
+				<br>
+				<?php get_template_part('includes/format', get_post_format());?>
 				
 		</article>
 
-		2020 | ericslyfield U+2120
 </div>
 
- 
-<?php get_footer();?>
-
+<footer>
+	<?php get_footer();?>
+</footer>
