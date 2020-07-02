@@ -26,9 +26,6 @@ This section helps you navigate the document.
   src: url(fonts/RiftSoft-Regular.woff2) format("woff2");
   font-weight: normal;
   font-style: normal; }
-html {
-  font-family: 'Rift Soft'; }
-
 * {
   margin: 0;
   padding: 0;
@@ -122,7 +119,7 @@ a:hover {
 
 */
 html * {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Rift Soft', sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 1em;
@@ -144,7 +141,7 @@ hr {
   width: 1px; }
 
 #wrapper {
-  margin: 0;
+  margin: 0 auto;
   width: 87vw;
   margin-left: auto;
   margin-right: auto; }
@@ -155,26 +152,89 @@ hr {
   align-items: center; }
 
 .title {
-  margin: 0;
+  margin: 10px auto;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   align-items: center;
   justify-content: center; }
 
-.content {
-  width: inherit; }
+.thumbnail {
+  position: relative;
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  justify-content: center; }
 
-.time {
-  margin: 0;
+.content {
+  position: relative;
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  justify-content: center; }
+  .content img {
+    margin: 0;
+    margin-right: auto;
+    margin-left: auto; }
+  .content #widget {
+    width: 100%;
+    height: 166px;
+    margin: 0; }
+  .content iframe {
+    min-width: auto;
+    min-height: auto;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    border: none; }
+  .content p {
+    width: 90%;
+    margin: 0;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.5em; }
+
+.quote-content {
+  width: 95%;
   margin-left: auto;
   margin-right: auto;
   display: flex;
   text-align: center;
   justify-content: center; }
+  .quote-content blockquote {
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+    margin: 60px 80px 60px 80px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center; }
+  .quote-content p {
+    font-size: 2em;
+    margin-left: auto;
+    margin-right: auto; }
+
+.time {
+  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  justify-content: center; }
+  .time .standard-time {
+    font-style: normal;
+    font-weight: 600; }
+  .time .stylized-time {
+    font-weight: 400; }
 
 .category {
-  margin: 0;
+  margin: 0 auto;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -183,7 +243,7 @@ hr {
 
 .pagination {
   padding: 25px;
-  margin: 0;
+  margin: 0 auto;
   margin-left: auto;
   margin-right: auto;
   display: flex;
@@ -202,5 +262,24 @@ footer {
   margin: 25px;
   color: red;
   background-color: red; }
+
+iframe video {
+  top: 0;
+  left: 0;
+  height: 0;
+  border: 0;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto; }
+
+#artwork_details_year,
+#artwork_details_medium,
+#artwork_details_material,
+#artwork_details_dimensions,
+#artwork_details_description,
+#artwork_details_exhibition_history_year,
+#artwork_details_exhibition_history_site {
+  width: 100%; }
 
 /*# sourceMappingURL=style.css.map */

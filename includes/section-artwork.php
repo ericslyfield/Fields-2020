@@ -1,15 +1,21 @@
 <?php get_header();?>
 
-<?php echo "section-artwork.php"; ?>
+<br>
+<main id="wrapper">
 
-<?php get_template_part('includes/format', get_post_format());?>
-	
-	
-	<?php the_post_thumbnail('large'); ?>
-	<br>
-	<?php the_content();?>
+		<article class="posts">
+				<br>
+				<?php if (have_posts()) : while( have_posts() ): the_post();  echo 'Post Format: ' .get_post_format(); ?>
 
+				<?php get_template_part('includes/format', get_post_format());?>
+				<br>
+				<?php endwhile; endif; ?>
+				<br>
 
-	<div class="post-break"></div>
+		</article>
 
-<?php endwhile; else: endif; ?>
+</main>
+
+<footer>
+<?php get_footer();?>
+</footer>

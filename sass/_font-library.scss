@@ -1,47 +1,41 @@
-$RiftSoft: bold italic;
-
 	@font-face {
-	font-family: 'Rift Soft';
+	font-family: 'Rift Soft', sans-serif;
 	src: url(fonts/RiftSoft-Regular.eot) format('eot');
-	font-weight: normal;
-	font-style: normal;
 	}
 	@font-face {
-	font-family: 'Rift Soft';
+	font-family: 'Rift Soft Italic', sans-serif;
 	src: url(fonts/RiftSoft-Italic.eot) format('eot');
-	font-weight: normal;
-	font-style: italic;
-	}
-	@font-face {
-	font-family: 'Rift Soft';
-	src: url(fonts/RiftSoft-Bold.eot) format('eot');
-	font-weight: bolder;
 	font-style: normal;
 	}
 	@font-face {
-	font-family: 'Rift Soft';
+	font-family: 'Rift Soft Bold', sans-serif;
+	src: url(fonts/RiftSoft-Bold.eot) format('eot');
+	font-weight: normal;
+	}
+	@font-face {
+	font-family: 'Rift Soft Medium', sans-serif;
 	src: url(fonts/RiftSoft-BoldItalic.eot) format('eot');
 	font-weight: bolder;
 	font-style: italic;
 	}
 	@font-face {
-	font-family: 'Rift Soft';
+	font-family: 'Rift Soft Medium', sans-serif;
 	src: url(fonts/RiftSoft-Medium.eot) format('eot');
 	font-weight: medium;
 	font-style: normal;
 	}
 	@font-face {
-	font-family: 'Rift Soft';
+	font-family: 'Rift Soft', sans-serif;
 	src: url(fonts/RiftSoft-DemiItalic.eot) format('eot');
 	font-weight: bold;
 	font-style: italic;
 	}
 	@font-face {
-	font-family: 'Rift Soft';
+	font-family: 'Rift Soft Demi', sans-serif;
 	src: url(fonts/RiftSoft-Demi.eot) format('eot');
 	font-weight: bold;
-	font-style: italic;
+	font-style: normal;
 	}
 	.type {
-	font-family: Rift Soft, Helvetica, sans-serif;
+	font-family: Rift Soft, sans-serif;
 	}

@@ -111,16 +111,11 @@ add_image_size('large', 1700, 1700, false);
 // Show Post Category Parent or First Tag
 
 function the_first_subcategory() {
-
-       $cat_name = 'category';
-       $categories = get_the_terms( $post->ID, $cat_name );
-       
-       foreach($categories as $category) {
-         if($category->parent){
-            echo $category->name;
-         }
-       }  
-};
+$categories = get_categories();
+foreach($categories as $category) {
+   echo '<div><a href="' . get_category_link($category->term_id) . '">' . $category->name . '</a></div>';
+} 
+}
 
 
 
@@ -141,6 +136,150 @@ register_taxonomy('mediums', array('artwork'), $args);
 
 add_action('init', 'custom_taxonomy');
 
+// Custom Meta Boxes
+
+add_action('add_meta_boxes', 'artwork_metadata');
+
+function artwork_metadata(){
+	add_meta_box(
+		'artwork_metadata',
+		__('Artwork Metadata', 'myartwork_meta'),
+		'artwork_general_meta',
+		'artwork',
+		'normal',
+		'high'
+		);
+}
+
+function artwork_general_meta($post) {
+	wp_nonce_field(plugin_basename(__FILE__), 'artwork_details_meta_nonce');
+
+	// Year
+	echo '<br>';
+	echo '<label for="artwork_year_meta"> Year: </label>';
+	echo '<input type="text" id="artwork_year_meta" name="artwork_year_meta" placeholder=" YYYY "';
+	echo '<br>';
+	echo '<br>';
+	// Medium
+	echo '<br>';
+	echo '<label for="artwork_medium_meta"> Medium: </label>';
+	echo '<input type="text" id="artwork_medium_meta" name="artwork_medium_meta" placeholder="  ">';
+	echo '<br>';
+	// Material
+	echo '<br>';
+	echo '<label for="artwork_details_material"> Material: </label>';
+	echo '<input type="text" id="artwork_details_material" name="artwork_details_material" placeholder="  ">';
+	echo '<br>';
+	// Dimensions
+	echo '<br>';
+	echo '<label for="artwork_details_dimensions"> Dimensions: </label>';
+	echo '<input type="text" id="artwork_details_dimensions" name="artwork_details_dimensions" placeholder=" H x W x D in inches ">';
+	echo '<br>';
+	// Description
+	echo '<br>';
+	echo '<label for="artwork_details_description"> Description: </label>';
+	echo '<input type="text" id="artwork_details_date" name="artwork_details_description" placeholder=" About the work... ">';
+	echo '<br>';
+	// Exhibition History (Year - Gallery / Event )
+	echo '<br>';
+	echo '<label for="artwork_details_exhibition_history_year"> Exhibition History: </label>';
+	echo '<input type="text" id="artwork_details_exhibition_history_year" name="artwork_details_exhibition_history_year" placeholder=" Year Exhibited ">' 
+
+	. ' - ' . 
+
+		'<input type="text" id="artwork_details_exhibition_history_site" name="artwork_details_exhibition_history_site" placeholder=" Site of Exhibition ">';
+	echo '<br>';
+}
+
+function artwork_general_meta_save($post_id) {
+
+	if(defined( 'DOING AUTOSAVE' ) && DOING_AUTOSAVE )
+		return;
+	if(!wp_verify_nonce($_POST['artwork_general_meta_nonce'], plugin_basename(__FILE__)))
+		return;
+	if('page' == $POST['post_type']){
+		if(!current_user_can('edit_page', $post_id))
+			return;
+	} else {
+		if(!current_user_can('edit_post', $post_id))
+			return;
+	}
+
+	$artwork_details_date = $_POST['artwork_details_date'];
+	update_post_meta($post_id, 'artwork_details_date', $artwork_details_date);
+
+	$artwork_details_medium = $_POST['artwork_details_medium'];
+	update_post_meta($post_id, 'artwork_details_medium', $artwork_details_medium);
+
+	$artwork_details_material = $_POST['artwork_details_material'];
+	update_post_meta($post_id, 'artwork_details_material', $artwork_details_material);
+
+	$artwork_details_dimensions = $_POST['artwork_details_dimensions'];
+	update_post_meta($post_id, 'artwork_details_dimensions', $artwork_details_dimensions);
+
+	$artwork_details_description = $_POST['artwork_details_description'];
+	update_post_meta($post_id, 'artwork_details_description', $artwork_details_description);
+
+	$artwork_details_exhibition_history_year = $_POST['artwork_details_exhibition_history_year'];
+	update_post_meta($post_id, 'artwork_details_exhibition_history_year', $artwork_details_exhibition_history_year);
+
+	$artwork_details_exhibition_history_site = $_POST['artwork_details_exhibition_history_site'];
+	update_post_meta($post_id, 'artwork_details_exhibition_history_site', $artwork_details_exhibition_history_site);
+}
+
+//
+//
+//
+//
+//
+
+add_action('add_meta_boxes', 'artwork_credits_meta');
+
+function artwork_credits_meta(){
+	add_meta_box(
+		'artwork_credits_meta',
+		__('Special Thanks and Credits', 'myartwork_credits_meta'),
+		'artwork_credits_meta_content',
+		'artwork',
+		'normal',
+		'high'
+		);
+}
+
+function artwork_credits_meta_content($post) {
+	wp_nonce_field(plugin_basename(__FILE__), 'artwork_details_meta_nonce');
+
+	// Credits
+	echo '<br>';
+	echo '<label for="artwork_details_credits"> Credits: </label>';
+	echo '<input type="text" id="artwork_details_credits" name="artwork_details_credits" placeholder=" ">';
+	echo '<br>';
+	// Special Thanks
+	echo '<br>';
+	echo '<label for="artwork_details_thanks"> Special Thanks: </label>';
+	echo '<input type="text" id="artwork_details_thanks" name="artwork_details_thanks" placeholder=" For Special Thanks...">';
+}
+
+function artwork_credits_meta_save( $post_id ) {
+
+	if(defined( 'DOING AUTOSAVE' ) && DOING_AUTOSAVE )
+		return;
+	if(!wp_verify_nonce($_POST['artwork_credits_meta_nonce'], plugin_basename(__FILE__)))
+		return;
+	if('page' == $POST['post_type']){
+		if(!current_user_can('edit_page', $post_id))
+			return;
+	} else {
+		if(!current_user_can('edit_post', $post_id))
+			return;
+	}
+
+		$artwork_details_credits = $_POST['artwork_details_credits'];
+	update_post_meta($post_id, 'artwork_details_credits', $artwork_details_credits);
+
+		$artwork_details_thanks = $_POST['artwork_details_thanks'];
+	update_post_meta($post_id, 'artwork_details_thanks', $artwork_details_thanks);
+};
 
 // Navigation Menus
 register_nav_menus(

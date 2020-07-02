@@ -10,7 +10,7 @@
 	</h2>
 	<br>
 	<!-- A Container for the WaveSurfer Waveform (via AlexPlayer) -->
-	<div class="audio-content">
+	<div class="content">
 
 		<?php
 		$content = do_shortcode( apply_filters('the_content', $post->post_content));
@@ -22,7 +22,7 @@
 
 		<!-- <?php the_content(); ?> -->
 			
-		</div>
+	</div>
 
 </section>
 

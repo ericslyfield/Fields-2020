@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" <?php language_attributes(); ?>>
 <head>
+  
   <meta charset="utf-8">
+  <link rel="stylesheet" href="sass/_font-library.scss">
+
   <title><?php get_the_title(); ?></title>
 
     <?php wp_head();?>
