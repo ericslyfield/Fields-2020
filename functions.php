@@ -20,18 +20,24 @@ function load_global_styles()
 	// 1. Stylesheet Support
 
 	wp_register_style('stylesheet', get_template_directory_uri() . '/sass/style.css', array(), false, 'all');
+	wp_register_style('stylesheet', get_template_directory_uri() . '/css/lightslider.css', array(), false, 'all');
 	wp_enqueue_style('stylesheet');
 }
 add_action('wp_enqueue_scripts', 'load_global_styles');
 
 
-function include_jquery()
+function include_script_bundler()
 {
 	// jQuery Support
-	wp_deregister_script('jquery');
 	wp_enqueue_script('jquery', get_template_directory_uri() . '/js/jquery-3.5.1.min.js', '', 1, true);
+	// Custom Scripts
+	wp_enqueue_script('wavesurfer', get_template_directory_uri() . '/js/scripts.js', '', 1, true);
+	// Lightslider
+	wp_enqueue_script( 'lightslider', get_stylesheet_directory_uri() . '/js/lightslider.js', array( 'jquery' ), 1, true);
+	// Wavesurfer
+	wp_enqueue_script('wavesurfer', get_template_directory_uri() . '/js/wavesurfer.js', '', 1, true);
 }
- add_action('wp_enqueue_scripts', 'include_jquery');
+ add_action('wp_enqueue_scripts', 'include_script_bundler');
 
 function loadjs()
 {
@@ -47,6 +53,9 @@ add_action('wp_enqueue_scripts', 'loadjs');
 
 // Adds Menu Support
 add_theme_support('menus');
+
+// Adds Title Support
+add_theme_support('title-tag');
 
 // Adds Post Format Support
 add_theme_support('post-formats', array('standard', 'aside', 'quote', 'link', 'image', 'video', 'gallery', 'audio'));
@@ -79,6 +88,8 @@ function the_post_format() {
 	}
 };
 
+/**/
+
 /* Custom Post Support - Backend Extension */
 
 function custom_post_type() {
@@ -92,6 +103,8 @@ $args = array(
 	'public' => true,
 	'has_archive' => true,
 	'menu_icon' => 'dashicons-admin-customizer',
+	'menu_position' => 5,
+	'has_archive'=> true,
 );
 register_post_type('artwork', $args);
 }
@@ -107,38 +120,94 @@ add_image_size('small', 350, 350, false);
 add_image_size('medium', 750, 750, false);
 add_image_size('large', 1700, 1700, false);
 
+// Get Attachment (Gallery Suport)
+
+function the_gallery_images( $num = 1 ){
+
+	$output =  '';
+	if ( has_post_thumbnail() && $num == 1):
+		$output = wp_get_attachment_url(get_post_thumbnail_id(get_the_ID()));
+	else: 
+		$attachments = get_posts(array(
+			'post_type' => 'attachment',
+			'posts_per_page' => $num,
+			'post_parent' => get_the_ID()
+		));
+		if($attachments && $num == 1):
+			foreach($attachments as $attachment):
+				$output = wp_get_attachment_url($attachment->ID);
+			endforeach;
+		elseif($attachments && $num > 1):
+			$output = $attachments;
+		endif;
+
+		wp_reset_postdata();
+
+	endif;
+
+	return $output;
+}
+
+
+function get_embedded_media($type = array()){
+
+	$content = do_shortcode(apply_filters('the_content', get_the_content()));
+	$embed = get_media_embedded_in_content($content, $type);
+
+	if(in_array('audio', $type)):
+		$output = str_replace('?visual=true', '?visual=false', $embed[0]);
+	else:
+		$output = $embed[0];
+	endif;
+
+	return $output;
+}
+
 
 // Show Post Category Parent or First Tag
 
 function the_first_subcategory() {
-$categories = get_categories();
-foreach($categories as $category) {
-   echo '<div><a href="' . get_category_link($category->term_id) . '">' . $category->name . '</a></div>';
-} 
+	$categories = get_the_category();
+
+	foreach($categories as $category) {
+	   echo '<div><a href="' . get_category_link($category->term_id) . '">' . $category->name . "  " .'</a></div>'  . " ";
+	} 
 }
 
 
 
-// Custom Taxonomy Support
+// Custom Taxonomy Support (Mediums)
 
 function custom_taxonomy(){
-	$args = array(
+	$meds = array(
 		'labels' => array(
 			'name' => 'Mediums',
 			'singular_name' => 'Medium',
 		),
 
 		'public' => true,
+		'hierarchical' => true,
+			);
+
+register_taxonomy('mediums', array('artwork'), $meds);
+
+	$year = array(
+		'labels' => array(
+			'name' => 'Year',
+			'singular_name' => 'Year',
+		),
+
+		'public' => true,
 		'hierarchical' => false,
 			);
-register_taxonomy('mediums', array('artwork'), $args);
+register_taxonomy('year', array('artwork'), $year);
+
 }
 
 add_action('init', 'custom_taxonomy');
 
-// Custom Meta Boxes
 
-add_action('add_meta_boxes', 'artwork_metadata');
+// Custom Meta Boxes (Artwork Metadata)
 
 function artwork_metadata(){
 	add_meta_box(
@@ -151,15 +220,18 @@ function artwork_metadata(){
 		);
 }
 
+add_action('add_meta_boxes', 'artwork_metadata');
+
 function artwork_general_meta($post) {
 	wp_nonce_field(plugin_basename(__FILE__), 'artwork_details_meta_nonce');
 
-	// Year
-	echo '<br>';
-	echo '<label for="artwork_year_meta"> Year: </label>';
-	echo '<input type="text" id="artwork_year_meta" name="artwork_year_meta" placeholder=" YYYY "';
-	echo '<br>';
-	echo '<br>';
+	// // Year
+	// echo '<br>';
+	// echo '<label for="artwork_year_meta"> Year: </label>';
+	// echo '<input type="text" id="artwork_year_meta" name="artwork_year_meta" placeholder=" YYYY "';
+	// echo '<br>';
+	// echo '<br>';
+	
 	// Medium
 	echo '<br>';
 	echo '<label for="artwork_medium_meta"> Medium: </label>';
@@ -228,10 +300,6 @@ function artwork_general_meta_save($post_id) {
 }
 
 //
-//
-//
-//
-//
 
 add_action('add_meta_boxes', 'artwork_credits_meta');
 
@@ -281,7 +349,113 @@ function artwork_credits_meta_save( $post_id ) {
 	update_post_meta($post_id, 'artwork_details_thanks', $artwork_details_thanks);
 };
 
+// add_action('add_meta_boxes', 'artwork_year_meta');
+
+// // Artwork Year Meta
+
+// function artwork_year_meta(){
+// 	add_meta_box(
+// 		'artwork_year_meta',
+// 		__('Year', 'myartwork_credits_meta'),
+// 		'artwork_year_meta_content',
+// 		'artwork',
+// 		'normal',
+// 		'high'
+// 		);
+// }
+
+
+// function artwork_year_meta_content($post) {
+// 	wp_nonce_field(plugin_basename(__FILE__), 'artwork_details_meta_nonce');
+
+// 	// Year
+// 	echo '<br>';
+// 	echo '<label for="artwork_year"> Year: </label>';
+// 	echo '<input type="text" id="artwork_year_credits" name="artwork_year_credits" placeholder=" ">';
+// 	echo '<br>';
+// }
+
+// function artwork_year_meta_save( $post_id ) {
+
+// 	if(defined( 'DOING AUTOSAVE' ) && DOING_AUTOSAVE )
+// 		return;
+// 	if(!wp_verify_nonce($_POST['artwork_year_meta_nonce'], plugin_basename(__FILE__)))
+// 		return;
+// 	if('page' == $POST['post_type']){
+// 		if(!current_user_can('edit_page', $post_id))
+// 			return;
+// 	} else {
+// 		if(!current_user_can('edit_post', $post_id))
+// 			return;
+// 	}
+
+// 		$artwork_details_credits = $_POST['artwork_details_credits'];
+// 	update_post_meta($post_id, 'artwork_details_credits', $artwork_details_credits);
+
+// 		$artwork_details_thanks = $_POST['artwork_details_thanks'];
+// 	update_post_meta($post_id, 'artwork_details_thanks', $artwork_details_thanks);
+// };
+
+
+
+// Custom Meta Boxes (Quote Metadata)
+
+
+add_action('add_meta_boxes', 'artwork_credits_meta');
+
+function quote_credit_meta(){
+	add_meta_box(
+		'quote_credits_meta',
+		__('Special Thanks and Credits', 'myquote_credits_meta'),
+		'quote_credits_meta_content',
+		'quote',
+		'normal',
+		'high'
+		);
+}
+
+function quote_credit_meta_content($post) {
+	wp_nonce_field(plugin_basename(__FILE__), 'artwork_details_meta_nonce');
+
+	// Credits
+	echo '<br>';
+	echo '<label for="quote_details_credits"> Credits: </label>';
+	echo '<input type="text" id="quote_details_credits" name="quote_details_credits" placeholder=" ">';
+	echo '<br>';
+	// Special Thanks
+	echo '<br>';
+	echo '<label for="quote_details_thanks"> Special Thanks: </label>';
+	echo '<input type="text" id="quote_details_thanks" name="quote_details_thanks" placeholder=" For Special Thanks...">';
+}
+
+function quote_credit_meta_save( $post_id ) {
+
+	if(defined( 'DOING AUTOSAVE' ) && DOING_AUTOSAVE )
+		return;
+	if(!wp_verify_nonce($_POST['quote_credit_meta_nonce'], plugin_basename(__FILE__)))
+		return;
+	if('page' == $POST['post_type']){
+		if(!current_user_can('edit_page', $post_id))
+			return;
+	} else {
+		if(!current_user_can('edit_post', $post_id))
+			return;
+	}
+
+		$artwork_details_credits = $_POST['artwork_details_credits'];
+	update_post_meta($post_id, 'quote_detail_credits', $quote_detail_credits);
+
+};
+
+
+
+//Gallery Styling
+
+add_filter( 'use_default_gallery_style', '__return_false' );
+
+
 // Navigation Menus
+
 register_nav_menus(
 	array(
 		'header-menu' =>__('Header Menu', 'theme'),
@@ -290,14 +464,22 @@ register_nav_menus(
 	)
 );
 
-/* Back End Support */
 
-function remove_footer_admin () {
+
+/* 
+
+// Back End Support 
+
+*/
+
+// Footer Tag
+
+function custom_footer_tag () {
  
 echo 'Designed and developed by Eric Slyfield';
  
 }
  
-add_filter('admin_footer_text', 'remove_footer_admin');
+add_filter('admin_footer_text', 'custom_footer_tag');
 
-?>
+

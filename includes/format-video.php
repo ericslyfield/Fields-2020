@@ -1,7 +1,11 @@
-<section>
+<section id="wrapper">
 
 <div class="category">
-	<?php the_first_subcategory() ;?>
+	<ul>
+		<li>
+		<?php the_first_subcategory() ;?>
+		</li>
+	</ul>
 </div>
 <br>
 <h2 class="title">

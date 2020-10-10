@@ -6,8 +6,7 @@
 	<div class="wrapper">
 
 			<article class="post">
-				<?php echo 'blank' ?>
-				<?php get_template_part('includes/section','content'); ?>
+				<?php get_template_part('includes/section','single'); ?>
 			</article>
 
 	</div>

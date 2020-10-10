@@ -1,3 +1,5 @@
+<section id="wrapper">
+
 	<h2 class="title">
 	<a href="<?php the_permalink();?>"><?php the_title(); ?></a>
 	</h2>
@@ -16,3 +18,5 @@
 		<hr class="dot-break">
 		<br>
 		</div>
+
+</section>

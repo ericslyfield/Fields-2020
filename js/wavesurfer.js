@@ -1,5 +1,6 @@
 $(document).ready(function() {
 
+
 var wavesurfer = WaveSurfer.create({
     container: '#analyzer',
     cursorWidth: 0,

@@ -23,19 +23,9 @@ This section helps you navigate the document.
 03.
 */
 
+
+@import "./font-library";
 @import "./variables";
-// @import "./font-library";
-
-@font-face {
-  font-family: 'Rift Soft';
-  src: url(fonts/RiftSoft-Regular.woff2) format('woff2');
-  font-weight: normal;
-  font-style: normal;
-  }
-
-
-html {
-}
 
 * {
   margin: 0;
@@ -70,7 +60,11 @@ time, mark, audio, video {
   vertical-align: baseline;
 }
 
-// HTML5 display reset for older browsers 
+/*
+
+// HTML5 display reset for older browsers
+
+*/ 
 
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section, img, audio, video {
@@ -82,18 +76,14 @@ body, p, a, ul, ol {
 ol, ul {
   list-style: none;
 }
-blockquote, q {
-  quotes: none;
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
-  content: '';
-  content: none;
-}
 
 img {
   width: auto;
+  height: auto;
+}
+
+li {
+  padding: 0px 10px 0px 10px;
 }
 
 
@@ -122,6 +112,17 @@ img {
 #navigation {
   flex: 1;
   text-align: right;
+  
+  .menu-navigation-container{
+
+    ul{
+
+      li {
+        float: right;
+        text-align: right;
+      }
+    }
+  }
 }
 
 /*
@@ -146,19 +147,18 @@ a:hover {
 
 */
 
-html * {
+
+body {
+  // font-family: 'Dosis', sans-serif;
   font-family: 'Rift Soft', sans-serif;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 1em;
-  color: #000;
 }
 
-h2 * {
+h2 {
   text-transform: uppercase;
   font-size: 1.5em;
-  font-weight: bold;
   color: $forestgreen;
+  font-style: italic;
+  font-weight: bold;
 }
 
 
@@ -175,9 +175,15 @@ hr {
 
 #wrapper {
   margin: 0 auto;
-  width: 87vw;
   margin-left: auto;
   margin-right: auto;
+
+  width: 60vw;
+
+  #invertIconography {
+    width: 80%;
+  }
+
 }
 
 .post, .posts {
@@ -198,12 +204,12 @@ hr {
 
 .thumbnail {
 
+  display: flex;
   position: relative;
-  display: block;
 
   width: 80%;
-
-  margin: 0 auto;
+  
+  margin: 0;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -211,12 +217,9 @@ hr {
 
 }
 
-
-
 .content {
-  position: relative;
   display: block;
-  width: 80%;
+  position: relative;
   margin: 0 auto;
   margin-left: auto;
   margin-right: auto;
@@ -225,6 +228,7 @@ hr {
 
 
 img {
+  display: block;
   margin: 0;
   margin-right: auto;
   margin-left: auto;
@@ -237,57 +241,109 @@ img {
 
 }
 
+/*
+
+// iFrame (Embed) Styling
+
+*/
+
   iframe{
-  min-width: auto;
-  min-height: auto;
-  margin: 0;
-  margin-left: auto;
-  margin-right: auto;
-  border: none;
-  }
-
-
-
-  p {
-    width: 90%;
+  
+    min-width: auto;
+    min-height: auto;
     margin: 0;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  p {
+    display: flex;
+    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
     line-height: 1.5em;
+    justify-content: center;
+
+    .img {
+      display: block;
+    }
   }
 
 }
 
+/*
+
+// Quote Styling
+
+*/
+
 .quote-content {
-  width: 95%;
+  width: 50vw;
+
+  top: 0;
+  bottom: 0;
 
   margin-left: auto;
   margin-right: auto;
-  display: flex;
 
-  text-align: center;
+  display: flex;
+  float: left;
+
   justify-content: center;
 
   blockquote {
-    
-    width: 95%;
+    margin: auto;
+    margin-left: 7em;
 
-    margin-left: auto;
-    margin-right: auto;
-    margin: 60px 80px 60px 80px;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    justify-content: center;
+    max-width: 550px;
+
+    width: 100%;
+    float: left !important; 
+
     }
 
-
   p {
-    font-size: 2em;
+    font-size: 1.5em;
+    line-height: 1.25em;
     margin-left: auto;
     margin-right: auto;
 
   }
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+}
+
+blockquote{
+
+  margin: auto;
+  padding: 15px 25px 15px 25px;
+  
+
+  .quote-content::before{
+      font-size: 10em;
+      content: open-quote;
+      display: inline-block;
+      padding-top: .5em;
+      text-align: center;
+      vertical-align: text-bottom;
+    } 
+
+  .quote-content::after{
+      font-size: 10em;
+      content: close-quote;
+      display: inline-block;
+      padding-top: .5em;
+      justify-content: center;
+      vertical-align: text-top;
+    } 
+
+}
+
+.quote-wrap{
+  display: grid;
+  grid-auto-columns: 1fr 1fr 1fr;
 }
 
 .time {
@@ -316,6 +372,22 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+
+  ul{
+    li{ 
+
+      flex: 1;
+      flex-direction: row;
+      display: block;
+
+      a{
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        padding: 0px 10px 0px 10px;
+      }
+    }
+  }
 }
 
 .pagination {
@@ -330,8 +402,6 @@ img {
   text-align: center;
   justify-content: center;
 
-  background-color: yellow;
-
 }
 
 .dot-break {
@@ -345,12 +415,9 @@ img {
 footer {
   margin: 25px;
   color: red;
-  background-color: red;
 }
 
 iframe {
-  
-
 
   video{
     
@@ -380,6 +447,67 @@ iframe {
   width: 100%
 }
 
+//
 
 
+/*
 
+// Artwork Archive Styling
+
+*/
+
+.artwork-content{
+
+  width: 87vw;
+
+  top: 0;
+  bottom: 0;
+
+  margin-left: auto;
+  margin-right: auto;
+
+  display: flex;
+
+
+  text-align: center;
+  justify-content: center;
+
+}
+
+.post{}
+
+
+//
+
+#gallery-wrapper{
+  margin: 0 auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.psgal_wrap{
+  display: block;
+  margin: 0 auto;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+nav {
+    position: sticky;
+    top: 0;
+  ul{
+
+    li{
+
+    }
+  }
+}
+
+//
+
+.artwork-rss-feed {
+    margin: 0 auto;
+  margin-right: auto;
+  margin-left: auto;
+
+}
