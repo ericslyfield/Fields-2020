@@ -14,7 +14,7 @@
 		 			<?php 
 			// the query
 			$wpb_all_query = new WP_Query(array(
-				'post_type'=>'Artwork', 
+				'post_type'=>'post', 
 				'post_status'=>'publish', 
 				'posts_per_page'=> -1,
 				'category' => 0,
@@ -37,10 +37,10 @@
 			       			    <!-- end of the loop -->
 			 
 			</ul>
+			
+			 <?php wp_reset_postdata(); ?>
 			 
-			    <?php wp_reset_postdata(); ?>
-			 
-			<?php else : ?>
+			<?php else: ?>
 			    <p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
 			<?php endif; ?>
 

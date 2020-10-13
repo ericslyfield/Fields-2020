@@ -231,7 +231,7 @@ function artwork_general_meta($post) {
 	// echo '<input type="text" id="artwork_year_meta" name="artwork_year_meta" placeholder=" YYYY "';
 	// echo '<br>';
 	// echo '<br>';
-	
+
 	// Medium
 	echo '<br>';
 	echo '<label for="artwork_medium_meta"> Medium: </label>';
@@ -452,6 +452,54 @@ function quote_credit_meta_save( $post_id ) {
 //Gallery Styling
 
 add_filter( 'use_default_gallery_style', '__return_false' );
+
+// Glossary Shortcode
+
+function show_post_glossary() {
+					global $post;
+					$glossaryParams = array (
+						'posts_per_page' => -1,
+						'post_type' => 'Artwork',
+						'order' => 'ASC'
+					);
+					$postList = get_posts($glossaryParams);
+					ob_start();
+
+					$previous_letter = null;
+
+					foreach ($postList as $post) :
+						setup_postdata($post);
+
+						$glossary_title = get_post_custom_values($key = 'glossary_title');
+						$glossary_description = get_post_custom_values($key = 'glossary_description');
+						$glossary_letter = substr($glossary_title[0], 0, 1); 
+
+
+						if ( $glossary_letter !== $previous_letter ):
+						echo '</h3>';
+						echo $glossary_letter;
+						echo '</h3>';
+					endif;
+
+							echo '<p>';
+							echo '<a href="';
+						 	the_permalink();
+							echo '">';
+							echo $glossary_title[0];	
+							echo '</a>'; 
+							echo $glossary_description[0];
+							echo '</p>';
+
+						endforeach;
+
+						wp_reset_postdata();
+
+						$output = ob_get_clean();
+						return $output;
+
+					};
+
+					add_shortcode('glossary', 'show_post_glossary');
 
 
 // Navigation Menus
