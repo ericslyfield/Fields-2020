@@ -1,1 +1,1 @@
-404.php
+sp404.error

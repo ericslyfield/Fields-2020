@@ -6,11 +6,9 @@
 </head>
 <body>
 
-	<div id="wrapper">
+<div id="wrapper">
 
 <?php 
-
-echo '<br>';
 
 $this_char = '';
 $last_char = '';
@@ -26,13 +24,15 @@ $args=array(
 
 $my_query = new WP_Query($args);
 
+
+
 if ($my_query->have_posts()) :
 
-	// Display a Stylized Pound Sign
-
-	echo '<h3>';
-	echo ''. $numeric .'';
-	echo '</h3>';
+		      echo '<br>';
+			  echo '<h3>';
+		      echo '' . $numeric .'';
+		      echo '</h3>';
+		      echo '<br>';
 
 	while ($my_query->have_posts()) : $my_query->the_post();
 
@@ -42,9 +42,7 @@ if ($my_query->have_posts()) :
 
 	     if (is_numeric($this_char)) {
 
-	    	echo '<h3>';
-			echo ''. $numeric .'';
-			echo '</h3>';
+	    } elseif (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $this_char)) {
 
 	    } elseif ($this_char != $last_char) {
 
@@ -55,6 +53,7 @@ if ($my_query->have_posts()) :
 		      echo '' . $last_char .'';
 		      echo '</h3>';
 		      echo '<br>';
+
 	    } else ($last_char = $this_char);
 
 	    // Item Called Into List
@@ -76,7 +75,7 @@ wp_reset_query(); ?>
 
 
 	</div>
-
+<br>
 </body>
 
 <footer>

@@ -1,11 +1,11 @@
-<section>
+<section id="wrapper">
 
 	<div class="category">
 
 		<?php the_first_subcategory() ;?></a>
 	</div>
 	<br>
-	<h2 class="title">
+	<h2>
 	<a href="<?php the_permalink();?>"><?php the_title(); ?></a>
 	</h2>
 	<br>

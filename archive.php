@@ -3,11 +3,10 @@
 <br>
 <main id="wrapper">
 
-	<?php echo "archive.php"; ?>
-
 		<article class="posts">
 				<br>
-				<?php if (have_posts()) : while( have_posts() ): the_post();  echo 'Post Format: ' .get_post_format(); ?>
+				
+				<?php if (have_posts()) : while( have_posts() ): the_post(); ?>
 
 				<?php get_template_part('includes/format', get_post_format());?>
 				<br>
@@ -22,3 +21,4 @@
 <footer>
 <?php get_footer();?>
 </footer>
+

@@ -1,22 +1,22 @@
-<?php get_header();?>
+<body>
 
-<br>
-<main id="wrapper">
+<?php if (have_posts()) : while( have_posts() ): the_post(); ?>
 
-		<article class="posts">
+	<div class="category">
+	<?php the_first_subcategory() ;?>	
+	</div>
+	<h2>
+	<?php the_title(); ?>
+	</h2>
+	<div class="section-thumbnail">
+	<?php the_post_thumbnail('large'); ?>
+	</div>
+		<br>
+		<div class="content">
+		<?php the_content(); ?>
+		</div>
+		
+</body>
+		<hr class="dot-break">
 
-				<br>
-				<?php if (have_posts()) : while( have_posts() ): the_post();  echo 'Post Format: ' .get_post_format(); ?>
-<!-- 
-				<?php get_template_part('includes/format', get_post_format());?> -->
-				<br>
-				<?php endwhile; endif; ?>
-				<br>
-
-		</article>
-
-</main>
-
-<footer>
-<?php get_footer();?>
-</footer>
+<?php endwhile; else: endif; ?>

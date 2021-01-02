@@ -7,8 +7,6 @@
 
 
   <title><?php get_the_title(); ?></title>
-
-
     <?php wp_head();?>
 
 </head>
@@ -35,6 +33,7 @@
           </ul>
         </nav>
       </div>
+      
   </header>
 
 

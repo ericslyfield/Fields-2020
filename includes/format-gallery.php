@@ -4,7 +4,7 @@
 		<a href="<?php the_permalink();?>"><?php the_first_subcategory(); ?></a>
 	</div>
 	<br>
-	<h2 class="title">
+	<h2>
 		<a href="<?php the_permalink();?>"><?php the_title(); ?></a>
 	</h2>
 	<br>
@@ -17,6 +17,7 @@
 		<div id="gallery-wrapper">
 			<?php the_content(); ?>
 		</div>
+		<br>
 	</div>
 	<br>
 	<hr class="dot-break">

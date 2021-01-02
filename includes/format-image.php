@@ -4,7 +4,7 @@
 		<a href="<?php the_permalink();?>"><?php the_first_subcategory(); ?></a>
 	</div>
 	<br>
-	<h2 class="title">
+	<h2>
 		<a href="<?php the_permalink();?>"><?php the_title(); ?></a>
 	</h2>
 	<br>
@@ -18,8 +18,10 @@
 	<div class="content">
 			<?php if(the_gallery_images()):
 				$attachments = the_gallery_image(15); 
-				var_dump($attachments);
-				?>
+				var_dump($attachments); else {
+					the_content();
+				}
+				?> 
 	</div>
 	<br>
 	<hr class="dot-break">

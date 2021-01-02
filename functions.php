@@ -16,36 +16,50 @@ AA. Global Styles
 
 function load_global_styles() 
 {
-
 	// 1. Stylesheet Support
 
-	wp_register_style('stylesheet', get_template_directory_uri() . '/sass/style.css', array(), false, 'all');
+	wp_enqueue_style('stylesheet', get_template_directory_uri() . '/css/style.css', array(), false, 'all');
 	wp_register_style('stylesheet', get_template_directory_uri() . '/css/lightslider.css', array(), false, 'all');
-	wp_enqueue_style('stylesheet');
 }
+
 add_action('wp_enqueue_scripts', 'load_global_styles');
 
 
 function include_script_bundler()
+
 {
 	// jQuery Support
 	wp_enqueue_script('jquery', get_template_directory_uri() . '/js/jquery-3.5.1.min.js', '', 1, true);
-	// Custom Scripts
-	wp_enqueue_script('wavesurfer', get_template_directory_uri() . '/js/scripts.js', '', 1, true);
-	// Lightslider
-	wp_enqueue_script( 'lightslider', get_stylesheet_directory_uri() . '/js/lightslider.js', array( 'jquery' ), 1, true);
 	// Wavesurfer
-	wp_enqueue_script('wavesurfer', get_template_directory_uri() . '/js/wavesurfer.js', '', 1, true);
+	wp_enqueue_script('wavesurfer', get_template_directory_uri() . '/js/scripts.js', '', 2, true);
+	// Lightslider
+	wp_enqueue_script( 'lightslider', get_stylesheet_directory_uri() . '/js/lightslider.js', array( 'jquery' ), 3, true);
 }
  add_action('wp_enqueue_scripts', 'include_script_bundler');
 
 function loadjs()
+
 {
 	// Custom Javascript Support
 	wp_register_script('customjs', get_template_directory_uri() . '/js/scripts.js', '', 1, true);
 	wp_enqueue_script('customjs');
 }
+
 add_action('wp_enqueue_scripts', 'loadjs');
+
+// Woocommerce 
+
+
+function fields_woocommerce_support() {
+    add_theme_support( 'woocommerce' );
+};
+
+add_action( 'after_setup_theme', 'fields_woocommerce_support' );
+
+add_theme_support( 'wc-product-gallery-zoom' );
+add_theme_support( 'wc-product-gallery-lightbox' );
+add_theme_support( 'wc-product-gallery-slider' );
+
 
 
 
@@ -231,7 +245,7 @@ function artwork_general_meta($post) {
 	// echo '<input type="text" id="artwork_year_meta" name="artwork_year_meta" placeholder=" YYYY "';
 	// echo '<br>';
 	// echo '<br>';
-	
+
 	// Medium
 	echo '<br>';
 	echo '<label for="artwork_medium_meta"> Medium: </label>';
@@ -453,6 +467,10 @@ function quote_credit_meta_save( $post_id ) {
 
 add_filter( 'use_default_gallery_style', '__return_false' );
 
+// Glossary Shortcode
+
+
+
 
 // Navigation Menus
 
@@ -481,5 +499,7 @@ echo 'Designed and developed by Eric Slyfield';
 }
  
 add_filter('admin_footer_text', 'custom_footer_tag');
+
+
 
 

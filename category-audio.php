@@ -2,12 +2,7 @@
 
 <br>
 <main id="wrapper">
-
-	<?php echo "category.php"; ?>
-
-	<p> This is an audio category page. This is a paragraph.</p>
 	<br>
-
 		<article class="posts">
 			<?php 
 			// the query

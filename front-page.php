@@ -2,21 +2,22 @@
 
 <main id="wrapper">
 
-	<?php echo "front-page.php"; ?>
-	<br>
-	<?php if (have_posts()) : while( have_posts() ): the_post();  echo ' Post Format: ' . get_post_format(); ?>
-	<article class="posts">
+		<article class="posts">
+
+
+<?php if (have_posts()) : 
+	while( have_posts()): the_post(); ?>
+
+			<?php get_template_part('includes/format', get_post_format());?>
+			
+		</article>
 		<br>
-		<?php get_template_part('includes/format', get_post_format());?>
-	</article>
-
-	<?php endwhile; else: endif; ?>
-
-	<div class="pagination"> <?php posts_nav_link(); ?> </div>
-
+		
+		<br>
 </main>
-</body>
+<?php endwhile; else: endif; ?>
 
 <footer>
+	<div class="pagination"> <?php posts_nav_link(); ?> </div>
 	<?php get_footer(); ?>
 </footer>

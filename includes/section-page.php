@@ -1,36 +1,15 @@
-<?php echo 'single-page.php' ?>
-
-<?php if (have_posts()) : while( have_posts() ): the_post(); ?>
-
-
-			<div class="page-category">
+			<div class="category">
 				<?php the_first_subcategory();?>
 			</div>
 			<br>
-			<div class="page-title">
+			<div class="title">
 			<a href="<?php the_permalink();?>"><?php the_title(); ?></a>
 			</div>
 			<br>
-			<div class="page-thumbnail">
+			<div class="thumbnail">
 				<?php the_post_thumbnail('large'); ?>
 			</div>
-			<div class="page-content">
-				<?php 
-
-		$args = array(
-			'post_type' => 'post',
-			'posts_per_page' => -1,
-			'cat' => 5,
-		);
-
-		$query = new WP_Query($args);
-
-		if ($query->have_posts()) : 
-		while($query->have_posts()): the_post();
-
-		 ?>
-			<?php endwhile; endif; ?>
-			<?php wp_reset_postdata(); ?>
+			<div class="content">
 				<?php the_content();?>
 			</div>
 			<div class="page-break">

@@ -1,14 +1,10 @@
 <?php get_header();?>
-
-
-<?php echo 'single.php' ?>
-
-	<div class="wrapper">
+		
+<main id="wrapper">
 
 			<article class="post">
 				<?php get_template_part('includes/section','single'); ?>
 			</article>
-
-	</div>
+</div>
 
 <?php get_footer();?>

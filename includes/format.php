@@ -1,6 +1,4 @@
-<section>
-						
-	<?php 
+<?php 
 
 	if ( has_post_format( 'aside' )) {
 	   // code to display the aside format post here
@@ -30,5 +28,3 @@
 		get_template_part('includes/format','standard');
 };
 ?>
-
-</section>

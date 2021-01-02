@@ -4,25 +4,12 @@ Theme URI: https://ericslyfield.com/themes/ericslyfieldcom
 Description: A 2020 portfolio theme with grid-responsive blog functionality and custom post types for audio and video.
 Author: Eric Slyfield
 Author URI: https://ericslyfield.com
+Template: fields
 Version: 1.0.0
 License: GNU General Public License v2 or Later
 License URI: http://www.gnu.org/licenses/gpi-2.0.html
-Tags: blog, portfolio, minimal, ;
+Tags: blog, portfolio, minimal,
 */
-
-/*
-
-00. Help Desk
-_______________________________
-
-This section helps you navigate the document.
-
-00. Imports
-01. HTML5 Resets
-02. General Theme Support
-03.
-*/
-
 
 @import "./font-library";
 @import "./variables";
@@ -31,55 +18,80 @@ This section helps you navigate the document.
   margin: 0;
   padding: 0;
   border: 0;
-}
-
-/*
-
-// HTML5 Reset Rules
-
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
   font-size: 100%;
-  font: inherit;
   vertical-align: baseline;
 }
 
-/*
-
-// HTML5 display reset for older browsers
-
-*/ 
+/* HTML5 display-role reset for older browsers */
 
 article, aside, details, figcaption, figure, 
 footer, header, hgroup, menu, nav, section, img, audio, video {
   display: block;
 }
-body, p, a, ul, ol {
+body {
   line-height: 1;
 }
 ol, ul {
   list-style: none;
 }
+blockquote, q {
+  // quotes: none;
+}
+
+// blockquote:before, blockquote:after,
+// q:before, q:after {
+//   content: '';
+//   content: none;
+// }
+
+// blockquote::before {
+// content: "\201C";
+// display: block;
+// font-size: 80px;
+// // left: -125px;
+// // top: 25px;
+// position: relative;
+// height: 0;
+// }
+
+// blockquote::after {
+// content: "\201D";
+// display: block;
+// font-size: 80px;
+// // right: -375px;
+// // bottom: 25px;
+// position: relative;
+// height: 0;
+// }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+header {
+}
+
+li {
+  padding: 5px;
+}
+
+/* Link Styling */
+
+a {
+  color: black;
+  white-space: nowrap;
+  text-align: center;
+}
+
+a:hover{
+  color: $forestgreen;
+}
 
 img {
   width: auto;
   height: auto;
+  max-width: 100%;
 }
 
 li {
@@ -93,7 +105,13 @@ li {
 
 */
 
+header{
+  max-width: 100vw;
+}
+
 #header-wrapper {
+  font-size: xx-large;
+  font-weight: bold;
   width: 87%;
   margin: 0;
   margin-left: auto;
@@ -103,6 +121,7 @@ li {
   grid-gap: 25px;
   white-space: nowrap;
   padding: 5vw 5vw 5vw 5vw;
+  max-width: 100vw;
 }
 
 #site-title {
@@ -149,17 +168,69 @@ a:hover {
 
 
 body {
-  // font-family: 'Dosis', sans-serif;
+  //font-family: 'Helvetica', sans-serif;
   font-family: 'Rift Soft', sans-serif;
 }
 
-h2 {
-  text-transform: uppercase;
-  font-size: 1.5em;
-  color: $forestgreen;
-  font-style: italic;
-  font-weight: bold;
-}
+// Header Styling
+
+      h1{
+        display: grid;
+        width: 100%;
+        font-size: xxx-large;
+        padding: 15px 0px;
+        margin-top: 0.67em;
+        margin-bottom: 0.67em;
+        margin-left: auto;
+        margin-right: auto;
+        font-weight: bold;
+      }
+
+      h2 {
+        padding: 15px 0px;
+        display: grid;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        text-transform: uppercase;
+        font-size: xx-large;
+        color: $forestgreen;
+        font-style: italic;
+      }
+
+      h3 {
+        padding: 15px 0px;
+        display: grid;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        text-transform: uppercase;
+        font-size: x-large;
+        color: black;
+        font-style: italic;
+      }
+
+      h4 {
+        padding: 15px 0px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        text-transform: uppercase;
+        font-size: large;
+        color: black;
+        font-style: italic;
+      }
+
+        h5 {
+        padding: 15px 0px;
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        text-transform: uppercase;
+        font-size: medium;
+        color: black;
+        font-style: italic;
+      }
 
 
 /*
@@ -174,6 +245,26 @@ hr {
 }
 
 #wrapper {
+  position: relative;
+  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  // max-width: 87%;
+  width: 65vw;
+  border: none;
+  p{ font-size: 1.45em; font-weight: 500; }
+
+}
+
+  #invertIconography {
+    width: 100%;  
+    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+#index-wrapper {
   margin: 0 auto;
   margin-left: auto;
   margin-right: auto;
@@ -182,23 +273,27 @@ hr {
 
   #invertIconography {
     width: 80%;
+    height: 100%;
   }
 
+}
+
+.dot-break, hr.dot-break{
+  // margin: 0 auto;
 }
 
 .post, .posts {
   grid-area: post;
   flex-direction: column;
-  align-items: center;
+  max-width: 87vw;
 }
 
 .title {
   margin: 10px auto;
   margin-left: auto;
   margin-right: auto;
-
-  display: flex;
-  align-items: center;
+  font-size: xx-large;
+  align-text: center;
   justify-content: center;
 }
 
@@ -206,32 +301,92 @@ hr {
 
   display: flex;
   position: relative;
-
   width: 80%;
   
   margin: 0;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
+  text-align: left;
   justify-content: center;
 
 }
 
+
 .content {
-  display: block;
+  width: 100%;
+  height: auto;
   position: relative;
   margin: 0 auto;
   margin-left: auto;
   margin-right: auto;
-  text-align: center;
-  justify-content: center;
+  max-width: 87vw;
+  text-align: left;
 
+  text-align: center;
+
+.iframe{
+  border: none;
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    max-width: 87vw;
+    margin: 0 auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    }
+
+
+p{
+
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
+
+    iframe{
+    border: none;
+    display: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    text-align: center;
+    }
+}
+  }
+
+  img{
+    max-width: 87vw;
+  }
+
+  p{
+    text-align: left;
+  }
+
+  .frame{
+  width: 100%;
+  position: relative;
+
+  margin: 0 auto;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+
+}
+
+.frame{
+  position: relative;
+  width: 100%;
+  text-align: center !important;
+}
 
 img {
   display: block;
   margin: 0;
   margin-right: auto;
   margin-left: auto;
+  max-width: 100%;
 }
 
 #widget{
@@ -241,35 +396,52 @@ img {
 
 }
 
+#player{
+  margin: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.single-post .x-main.left .hentry .entry-featured {
+   margin-top:0 !important;
+}
+
+body .masthead {
+    min-height: 124px;
+}
+
 /*
 
 // iFrame (Embed) Styling
-
 */
 
-  iframe{
-  
+    .home .embed-youtube iframe {
+    margin-left: auto ;
+    margin-right: auto !important;
+}
+ 
+.gif{
+    width: 100%;
     min-width: auto;
     min-height: auto;
-    margin: 0;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  p {
-    display: flex;
+    max-width: 87vw;
     margin: 0 auto;
     margin-left: auto;
     margin-right: auto;
-    line-height: 1.5em;
-    justify-content: center;
+    }
+
+  p {
+    margin: 0 auto;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 2em;
+    text-align: left;
 
     .img {
       display: block;
     }
   }
-
-}
 
 /*
 
@@ -278,41 +450,32 @@ img {
 */
 
 .quote-content {
-  width: 50vw;
 
-  top: 0;
-  bottom: 0;
-
+  width: 100%;
+  margin: 0 auto;
   margin-left: auto;
   margin-right: auto;
 
   display: flex;
   float: left;
 
-  justify-content: center;
+  text-align: center;
 
   blockquote {
     margin: auto;
-    margin-left: 7em;
-
     max-width: 550px;
-
     width: 100%;
-    float: left !important; 
-
+    // float: left !important; 
     }
 
   p {
     font-size: 1.5em;
-    line-height: 1.25em;
+    font-weight: 1.35em;
+    line-height: 1.35em;
     margin-left: auto;
     margin-right: auto;
 
   }
-}
-
-blockquote:before, blockquote:after,
-q:before, q:after {
 }
 
 blockquote{
@@ -321,23 +484,23 @@ blockquote{
   padding: 15px 25px 15px 25px;
   
 
-  .quote-content::before{
-      font-size: 10em;
-      content: open-quote;
-      display: inline-block;
-      padding-top: .5em;
-      text-align: center;
-      vertical-align: text-bottom;
-    } 
+  // .quote-content::before{
+  //     font-size: 3em;
+  //     content: open-quote;
+  //     display: inline-block;
+  //     padding-top: .5em;
+  //     text-align: top;
+  //     vertical-align: text-top;
+  //   } 
 
-  .quote-content::after{
-      font-size: 10em;
-      content: close-quote;
-      display: inline-block;
-      padding-top: .5em;
-      justify-content: center;
-      vertical-align: text-top;
-    } 
+  // .quote-content::after{
+  //     font-size: 3em;
+  //     content: close-quote;
+  //     display: inline-block;
+  //     padding-top: .5em;
+  //     justify-content: center;
+  //     vertical-align: text-top;
+  //   } 
 
 }
 
@@ -417,23 +580,6 @@ footer {
   color: red;
 }
 
-iframe {
-
-  video{
-    
-    top: 0;
-    left: 0;
-    height: 0;
-    border: 0;
-
-    overflow: hidden;
-    margin: 0 auto;
-    margin-left: auto;
-    margin-right: auto;
-
-  }
-}
-
 
 //
 
@@ -474,7 +620,9 @@ iframe {
 
 }
 
-.post{}
+.post{
+  max-width: 87vw;
+}
 
 
 //
@@ -503,11 +651,21 @@ nav {
   }
 }
 
+
 //
 
 .artwork-rss-feed {
-    margin: 0 auto;
+  margin: 0 auto;
   margin-right: auto;
   margin-left: auto;
 
 }
+
+#primary { 
+
+      margin: 0 auto;
+      margin-right: auto;
+      margin-left: auto;
+      width: 87%;
+}
+
