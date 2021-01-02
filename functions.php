@@ -18,9 +18,8 @@ function load_global_styles()
 {
 	// 1. Stylesheet Support
 
-	wp_register_style('stylesheet', get_template_directory_uri() . '/css/lightslider.css', array(), false, 'all');
 	wp_enqueue_style('stylesheet', get_template_directory_uri() . '/css/style.css', array(), false, 'all');
-	
+	wp_register_style('stylesheet', get_template_directory_uri() . '/css/lightslider.css', array(), false, 'all');
 }
 
 add_action('wp_enqueue_scripts', 'load_global_styles');
